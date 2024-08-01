@@ -41,13 +41,14 @@ public class Ground {
 
     //private
     List<List<Cell>> createRowsOfCells(int maxColumns, int maxRows) {
-        ArrayList<List<Cell>> rows = new ArrayList<>();
+        List<List<Cell>> rows = new ArrayList<>();
         for (int y = 0; y < maxRows; y++) {
-            ArrayList<Cell> row = new ArrayList<>();
+            List<Cell> row = new ArrayList<>();
             rows.add(row);
             for (int x = 0; x < maxColumns; x++) {
                 Cell cell = new Cell(x, y);
                 row.add(cell);
+
             }
         }
         return rows;
@@ -57,18 +58,27 @@ public class Ground {
         return new PixelPosition(this.cellSize * cellPos.x(), this.cellSize * cellPos.y());
     }
 
+    public static void drawSquareAtGridPosition(GridPosition pos, PApplet applet, int cellSize){
+        int x = pos.x() * cellSize;
+        int y = pos.y() * cellSize;
+        applet.square(x, y, cellSize);
+    }
     void draw() {
 
         for (List<Cell> rowOfCells : rowsOfCells) {
-
             for (Cell cell : rowOfCells) {
-
                 applet.stroke(100);
-                applet.fill(cell.isActive() ?  0xFF6347 : 0xDCDCDC);
-                applet.square(
-                        cell.gridPosition().x() * cellSize,
-                        cell.gridPosition().y() * cellSize,
-                        cellSize);
+
+                applet.fill(cell.isActive() ? 40 : 255);
+                Ground.drawSquareAtGridPosition(cell.gridPosition(), applet, cellSize);
+
+
+                if (cell.isActive()) {
+                    applet.textSize(cellSize/2f);
+                    applet.fill(255, 0, 0);
+
+                }
+
             }
         }
     }
@@ -77,17 +87,21 @@ public class Ground {
         return rowsOfCells.get(y).get(x);
     }
 
+    Cell cellAt(GridPosition gridPos) {
+        return cellAt(gridPos.x(), gridPos.y());
+    }
+
     GridPosition midpoint() {
         return new GridPosition(
-                (int)Math.floor(width() / 2.0),
-                (int)Math.floor(height() / 2.0));
+                (int) Math.floor(width() / 2.0),
+                (int) Math.floor(height() / 2.0));
     }
 
     void clear() {
         rowsOfCells = createRowsOfCells(width(), height());
     }
 
-    boolean isPositionOutOfBounds(GridPosition pos){
+    boolean isPositionOutOfBounds(GridPosition pos) {
         return pos.x() < 0 || pos.x() > width() - 1 || pos.y() < 0 || pos.y() > height() - 1;
     }
 

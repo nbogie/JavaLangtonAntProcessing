@@ -27,12 +27,11 @@ public class Main extends PApplet {
         ground = new Ground(this, numColumns, numRows, cellSize);
 
         //where to start our ant?
-        GridPosition startPos = new GridPosition(numColumns/2, numRows/2);
+        GridPosition startPos = new GridPosition(numColumns / 2, numRows / 2);
 
-        ant =  new Ant(this, ground, startPos);
-        frameRate(5);
+        ant = new Ant(this, ground, startPos);
+        //frameRate(20);
     }
-
 
     @Override
     public void draw() {
