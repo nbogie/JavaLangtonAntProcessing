@@ -7,7 +7,7 @@ public class Ant {
     private Direction direction;
     private final Ground ground;  //ref won't change once ant is created
 
-    //named "p5" for brevity and familiarity, even though it's not actually p5 bu a "Processing Applet" instance.
+    //named "p5" for brevity and familiarity, even though it's not actually p5 but a "Processing Applet" instance.
     private final PApplet p5;
 
     //there's no real "color" type, it's just stored as an int
