@@ -1,28 +1,32 @@
 package org.academy.langton;
 
 public class Cell {
-    private boolean isActive;
+    private CellColour cellColour;
     private final GridPosition gridPosition;
 
-    public Cell(int x, int y){
+    public Cell(int x, int y) {
         gridPosition = new GridPosition(x, y);
-        isActive = false;
+        cellColour = CellColour.WHITE;
     }
 
-    public boolean toggleActive(){
-        isActive = !isActive;
-        return isActive;
+    /**
+     * moves the cell's state (colour) onwards through the cycle (updating the cell), and for convenience also returns the new value
+     */
+    public CellColour advanceStateColour() {
+        cellColour = switch (cellColour) {
+            case WHITE -> CellColour.BLACK;
+            case BLACK -> CellColour.RED;
+            case RED -> CellColour.WHITE;
+        };
+        return cellColour;
     }
 
-    public void setActive(boolean value){
-        isActive = value;
-    }
-
-    public boolean isActive() {
-        return isActive;
-    }
-
-    public GridPosition gridPosition(){
+    public GridPosition gridPosition() {
         return gridPosition;
     }
+
+    public CellColour getStateColour() {
+        return cellColour;
+    }
+
 }

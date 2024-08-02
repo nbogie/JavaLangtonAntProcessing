@@ -58,26 +58,25 @@ public class Ground {
         return new PixelPosition(cellSize * cellPos.x(), cellSize * cellPos.y());
     }
 
-    public static void drawSquareAtGridPosition(GridPosition pos, PApplet applet, int cellSize){
+    public static void drawSquareAtGridPosition(GridPosition pos, PApplet applet, int cellSize) {
         PixelPosition pixelPosition = cellPositionAsPixelPosition(pos, cellSize);
         applet.square(pixelPosition.x(), pixelPosition.y(), cellSize);
     }
+
     void draw() {
 
         for (List<Cell> rowOfCells : rowsOfCells) {
             for (Cell cell : rowOfCells) {
                 applet.stroke(100);
 
-                applet.fill(cell.isActive() ? 40 : 255);
-                Ground.drawSquareAtGridPosition(cell.gridPosition(), applet, cellSize);
-
-
-                if (cell.isActive()) {
-                    applet.textSize(cellSize/2f);
-                    applet.fill(255, 0, 0);
-
+                switch (cell.getStateColour()) {
+                    case BLACK -> applet.fill(40);
+                    case WHITE -> applet.fill(255);
+                    case RED -> applet.fill(255, 100, 75);
                 }
 
+                Ground.drawSquareAtGridPosition(
+                        cell.gridPosition(), applet, cellSize);
             }
         }
     }
