@@ -18,7 +18,7 @@ public class Ant {
         this.direction = Direction.random();
         this.ground = ground;
         this.gridPosition = new GridPosition(startPos.x(), startPos.y());
-        this.myColour = p5.color(255, 255, 0);
+        this.myColour = p5.color(255, 0, 255);
     }
 
     public void display() {
@@ -41,7 +41,11 @@ public class Ant {
         // At a white square, turn 90° right, flip the color of the square, move forward one unit
         // At a black square, turn 90° left, flip the color of the square, move forward one unit
 
+        moveForward();
+
         //Notes: In the ground object, "white" squares are "inactive", "black" squares are "active"
+
+
     }
 
     private void moveForward() {
