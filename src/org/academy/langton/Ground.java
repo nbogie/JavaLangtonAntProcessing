@@ -10,7 +10,7 @@ public class Ground {
     private List<List<Cell>> rowsOfCells;
     private final PApplet applet;
     /**
-     * cell size in pixels
+     * cell size in pixels for display purposes
      */
     private final int cellSize;
 
