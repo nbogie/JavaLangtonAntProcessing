@@ -54,14 +54,13 @@ public class Ground {
         return rows;
     }
 
-    PixelPosition cellPositionAsPixelPosition(GridPosition cellPos) {
-        return new PixelPosition(this.cellSize * cellPos.x(), this.cellSize * cellPos.y());
+    static PixelPosition cellPositionAsPixelPosition(GridPosition cellPos, int cellSize) {
+        return new PixelPosition(cellSize * cellPos.x(), cellSize * cellPos.y());
     }
 
     public static void drawSquareAtGridPosition(GridPosition pos, PApplet applet, int cellSize){
-        int x = pos.x() * cellSize;
-        int y = pos.y() * cellSize;
-        applet.square(x, y, cellSize);
+        PixelPosition pixelPosition = cellPositionAsPixelPosition(pos, cellSize);
+        applet.square(pixelPosition.x(), pixelPosition.y(), cellSize);
     }
     void draw() {
 
