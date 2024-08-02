@@ -13,14 +13,12 @@ In a new branch, update the system to follow the three-colour rules specified in
 
 ## Important objects (for both tasks)
 
-Ant: An Ant object stands on a Ground object representing the entire grid.
+**Ant**: An Ant object stands on a Ground object representing the entire grid.
 
-Ground: A Ground object maintains a list of Cell objects at different positions.
+**Ground**: A Ground object maintains a list of Cell objects at different positions.
 
-Cell: Each Cell knows whether it is active or inactive.
+**Cell**: Each Cell knows whether it is active or inactive.
 
+**Colours of cells**: _Active_ cells are drawn black during visualisation, and _inactive_ cells are drawn white, though you could change this.
 
-Colours of cells: _Active_ cells are drawn black during visualisation, and _inactive_ cells are drawn white, though you could change this.
-
-PApplet: Various of the objects have access to a PApplet object - this represents the Processing library and the canvas, and gives access to a lot of drawing methods, as well as others like random(), map(), width(), height(), etc.
-
+**PApplet**: Various of the objects have access to a PApplet object - this represents the Processing library and the canvas, and gives access to a lot of drawing methods, as well as others like random(), map(), width(), height(), etc.
