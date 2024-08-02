@@ -24,6 +24,13 @@ public class Ant {
     public void display() {
         p5.fill(myColour);
         Ground.drawSquareAtGridPosition(gridPosition, p5, ground.getCellSize());
+        displayGridPositionAsText();
+    }
+
+    void displayGridPositionAsText() {
+        p5.fill(0);
+        p5.textSize(20);
+        p5.text(gridPosition.toString(), 20, 50);
     }
 
     public void update() {
