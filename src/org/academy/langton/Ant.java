@@ -3,15 +3,14 @@ package org.academy.langton;
 import processing.core.PApplet;
 
 public class Ant {
-    private float size;
     private GridPosition gridPosition;
     private Direction direction;
-    private final Ground ground;
+    private final Ground ground;  //ref won't change once ant is created
 
-    //named "p5" for brevity and familiarity, even though it's not p5
+    //named "p5" for brevity and familiarity, even though it's not actually p5 bu a "Processing Applet" instance.
     private final PApplet p5;
 
-    //there's no real color type, it's just stored as an int
+    //there's no real "color" type, it's just stored as an int
     private final int myColour;
 
     public Ant(PApplet p5, Ground ground, GridPosition startPos) {
@@ -30,7 +29,7 @@ public class Ant {
     public void update() {
         Cell currentCell = ground.cellAt(gridPosition);
 
-        if (currentCell.isActive()){
+        if (currentCell.isActive()) {
             turnClockwise();
         } else {
             turnCounterclockwise();
@@ -40,20 +39,24 @@ public class Ant {
     }
 
     private void moveForward() {
-        DirectionalOffset directionalOffset = DirectionalOffset.offsetFor(direction);
-        GridPosition candidatePosition = GridPosition.add(gridPosition, directionalOffset.x(), directionalOffset.y());
-        if (ground.isPositionOutOfBounds(candidatePosition)){
+        moveInDirection(direction);
+    }
+
+    private void moveInDirection(Direction givenDir) {
+        DirectionalOffset offset = DirectionalOffset.offsetFor(givenDir);
+        GridPosition candidatePosition = GridPosition.add(
+                gridPosition, offset.x(), offset.y());
+        if (ground.isPositionOutOfBounds(candidatePosition)) {
             gridPosition = ground.midpoint().copy();
-        }
-        else {
+        } else {
             gridPosition = candidatePosition;
         }
-
     }
 
     private void turnClockwise() {
         direction = direction.nextClockwise();
     }
+
     private void turnCounterclockwise() {
         direction = direction.nextCounterClockwise();
     }
