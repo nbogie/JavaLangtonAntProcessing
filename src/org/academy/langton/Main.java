@@ -30,7 +30,9 @@ public class Main extends PApplet {
         GridPosition startPos = new GridPosition(numColumns / 2, numRows / 2);
 
         ant = new Ant(this, ground, startPos);
-        //frameRate(20);
+
+        //You can speed things up or down, here:
+        frameRate(3);
     }
 
     @Override
