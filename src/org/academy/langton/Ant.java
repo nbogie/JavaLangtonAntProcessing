@@ -53,7 +53,7 @@ public class Ant {
         GridPosition candidatePosition = GridPosition.add(
                 gridPosition, offset.x(), offset.y());
         if (ground.isPositionOutOfBounds(candidatePosition)) {
-            gridPosition = ground.midpoint().copy();
+            gridPosition = ground.positionOfCentre().copy();
         } else {
             gridPosition = candidatePosition;
         }
