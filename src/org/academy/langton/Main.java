@@ -17,6 +17,7 @@ public class Main extends PApplet {
     @Override
     public void settings() {
         size(pixelWidth, pixelHeight);
+
     }
 
     @Override
@@ -24,16 +25,28 @@ public class Main extends PApplet {
         int cellSize = 20;
         int numColumns = pixelWidth / cellSize;
         int numRows = pixelHeight / cellSize;
+
         ground = new Ground(this, numColumns, numRows, cellSize);
 
         //where to start our ant?
-        GridPosition startPos = new GridPosition(numColumns / 2, numRows / 2);
-
-        ant = new Ant(this, ground, startPos);
+        GridPosition startPos = ground.midpoint();
+        ant = new TricolourAnt(this, ground, startPos);
         //frameRate(20);
     }
-
     @Override
+    public void keyPressed(){
+
+        System.out.println("key pressed: " + key);
+        GridPosition pos = ant.getGridPosition();
+        if (key=='1'){
+            ant = new TricolourAnt(this, ground, pos.copy());
+        } else if (key=='2'){
+            ant = new RandomWalkAnt(this, ground, pos.copy());
+        }
+    }
+
+
+        @Override
     public void draw() {
         background(200);
         ground.draw();
