@@ -89,7 +89,7 @@ public class Ground {
         return cellAt(gridPos.x(), gridPos.y());
     }
 
-    GridPosition midpoint() {
+    GridPosition getCentreGridPosition() {
         return new GridPosition(
                 (int) Math.floor(width() / 2.0),
                 (int) Math.floor(height() / 2.0));
