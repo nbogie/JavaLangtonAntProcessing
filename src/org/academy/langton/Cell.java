@@ -12,13 +12,12 @@ public class Cell {
     /**
      * moves the cell's state (colour) onwards through the cycle (updating the cell), and for convenience also returns the new value
      */
-    public CellColour advanceStateColour() {
+    public void advanceStateColour() {
         cellColour = switch (cellColour) {
             case WHITE -> CellColour.BLACK;
             case BLACK -> CellColour.RED;
             case RED -> CellColour.WHITE;
         };
-        return cellColour;
     }
 
     public GridPosition gridPosition() {

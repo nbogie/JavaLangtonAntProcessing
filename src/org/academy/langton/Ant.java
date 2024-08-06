@@ -31,7 +31,16 @@ public class Ant {
         p5.fill(0);
         p5.textSize(20);
         p5.text(gridPosition.toString(), 20, 50);
+
     }
+
+    public void reposition(GridPosition desiredPosition){
+        if (ground.isPositionOutOfBounds(desiredPosition)){
+            return;
+        }
+        gridPosition = desiredPosition;
+    }
+
 
     public void update() {
         Cell currentCell = ground.cellAt(gridPosition);

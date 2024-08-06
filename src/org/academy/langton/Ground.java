@@ -39,7 +39,6 @@ public class Ground {
         return this.rowsOfCells.size();
     }
 
-    //private
     List<List<Cell>> createRowsOfCells(int maxColumns, int maxRows) {
         List<List<Cell>> rows = new ArrayList<>();
         for (int y = 0; y < maxRows; y++) {
@@ -81,11 +80,11 @@ public class Ground {
         }
     }
 
-    Cell cellAt(int x, int y) {
+    public Cell cellAt(int x, int y) {
         return rowsOfCells.get(y).get(x);
     }
 
-    Cell cellAt(GridPosition gridPos) {
+    public Cell cellAt(GridPosition gridPos) {
         return cellAt(gridPos.x(), gridPos.y());
     }
 
@@ -95,11 +94,14 @@ public class Ground {
                 (int) Math.floor(height() / 2.0));
     }
 
+    /**
+     * Clears the ground completely back to an initial state
+     */
     void clear() {
         rowsOfCells = createRowsOfCells(width(), height());
     }
 
-    boolean isPositionOutOfBounds(GridPosition pos) {
+    public boolean isPositionOutOfBounds(GridPosition pos) {
         return pos.x() < 0 || pos.x() > width() - 1 || pos.y() < 0 || pos.y() > height() - 1;
     }
 
