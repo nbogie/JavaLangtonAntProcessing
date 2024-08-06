@@ -1,7 +1,7 @@
 package org.academy.langton;
 import processing.core.PApplet;
 
-public class BaseAnt implements Ant{
+public abstract class BaseAnt implements Ant{
     protected GridPosition gridPosition;
     protected Direction direction;
     protected final Ground ground;  //ref won't change once ant is created
@@ -22,9 +22,7 @@ public class BaseAnt implements Ant{
     }
 
     @Override
-    public void update() {
-        //do nothing as a base implementation of update
-    }
+    public abstract void update();
 
     @Override
     public void display() {

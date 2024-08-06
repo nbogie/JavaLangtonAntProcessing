@@ -36,12 +36,16 @@ public class Main extends PApplet {
         System.out.println("key pressed: " + key);
         GridPosition posOfPrevAnt = ant.getGridPosition().copy();
         switch (key) {
-            case '1': {
+            case '3': {
                 ant = new TricolourAnt(this, ground, posOfPrevAnt);
                 break;
             }
-            case '2': {
+            case 'r': {
                 ant = new RandomWalkAnt(this, ground, posOfPrevAnt);
+                break;
+            }
+            case 't': {
+                ant = new TeleportingAnt(this, ground, posOfPrevAnt);
                 break;
             }
             default:
