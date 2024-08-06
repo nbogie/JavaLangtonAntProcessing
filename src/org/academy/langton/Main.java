@@ -47,6 +47,9 @@ public class Main extends PApplet {
             case 't': {
                 ant = new TeleportingAnt(this, ground, posOfPrevAnt);
                 break;
+            }case 'c': {
+                ground.clear();
+                break;
             }
             default:
                 break;
